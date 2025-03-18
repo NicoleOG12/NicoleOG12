@@ -15,7 +15,8 @@
   <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/output/pacman-contribution-graph.svg">
 </picture>
 
-###
+ ![snake gif](https://github.com/SEU_USUARIO/SEU_REPOSITORIO/blob/output/github-contribution-grid-snake.svg
+
 
 
 <div align="left">
