@@ -15,10 +15,6 @@
   <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/output/pacman-contribution-graph.svg">
 </picture>
 
- ![pacman gif](https://github.com/NicoleOG12/NicoleOG12/blob/output/github-contribution-grid-pacman.svg)
-
-
-
 <div align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" alt="javascript logo"  />
   <img width="12" />
@@ -39,3 +35,4 @@
 
 <br clear="both">
 
+ ![snake gif](https://github.com/NicoleOG12/NicoleOG12/blob/output/github-contribution-grid-snake.svg)
