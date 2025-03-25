@@ -9,16 +9,6 @@
 <br>
 <br>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/output/pacman-contribution-graph-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/output/pacman-contribution-graph.svg">
-  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/output/pacman-contribution-graph.svg">
-</picture>
-<br>
-<br>
-<br>
-<br>
-
 <div align="center">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="50" alt="javascript logo"  />
   <img width="20" />
@@ -37,5 +27,17 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" height="50" alt="figma logo" />
   <img width="20" />
 </div>
+<br>
+<br>
+<br>
+<br>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/output/pacman-contribution-graph-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/output/pacman-contribution-graph.svg">
+  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/output/pacman-contribution-graph.svg">
+</picture>
+<br>
+<br>
 
 <br clear="both">
