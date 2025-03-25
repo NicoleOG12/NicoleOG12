@@ -1,4 +1,4 @@
-<h2 align="left"> Oie! Sou Nicole, Programadora Front-end e Designer </h2>
+<h2 align="center"> Oie! Sou Nicole, Programadora Front-end e Designer </h2>
 <br>
 <br>
 
