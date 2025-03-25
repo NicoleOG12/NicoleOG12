@@ -1,4 +1,6 @@
 <h2 align="left"> Oie! Sou Nicole, Programadora Front-end e Designer </h2>
+<br>
+<br>
 
 <div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=NicoleOG12&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false&order=1" height="150" alt="stats graph"  />
@@ -12,7 +14,10 @@
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/output/pacman-contribution-graph.svg">
   <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/output/pacman-contribution-graph.svg">
 </picture>
-
+<br>
+<br>
+<br>
+<br>
 
 <div align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="30" alt="javascript logo"  />
