@@ -52,8 +52,11 @@
 
 ### Tools
 <p>
+  <img alt="VS" height="45" src="https://upload.wikimedia.org/wikipedia/commons/5/59/Visual_Studio_Icon_2019.svg" />&nbsp;&nbsp;
+  <img alt="VS Code" height="45" src="https://cdn.worldvectorlogo.com/logos/visual-studio-code-1.svg" />&nbsp;&nbsp;
   <img alt="Expo" height="50" src="https://cdn.creazilla.com/icons/3256562/file-type-expo-icon-md.png" />&nbsp;&nbsp;
   <img alt="Android Studio" height="52" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/androidstudio/androidstudio-original.svg" />&nbsp;&nbsp;
+  <img alt="Git" height="50" src="https://www.svgrepo.com/show/303548/git-icon-logo.svg" />&nbsp;&nbsp;
   <img alt="Figma" height="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/figma/figma-original.svg" />
 </p>
 
