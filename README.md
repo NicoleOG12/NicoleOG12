@@ -47,7 +47,7 @@
   <img alt="Firebase" height="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-plain.svg" />&nbsp;&nbsp;
   <img alt="MongoDB" height="48" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" />&nbsp;&nbsp;
   <img alt="MySQL" height="48" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" />&nbsp;&nbsp;
-  <img alt="SQL Server" height="50" src="https://img.icons8.com/?size=100&id=9nLaR5KFGjN0&format=png&color=000000" />
+  <img alt="SQL Server" height="50" src="https://img.icons8.com/?size=100&id=laYYF3dV0Iew&format=png&color=000000"/>
 </p>
 
 ### Tools
