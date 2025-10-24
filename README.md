@@ -32,7 +32,7 @@
 <p>
   <img alt="HTML5" height="46" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />&nbsp;&nbsp;
   <img alt="CSS3" height="46" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />&nbsp;&nbsp;
-  <img alt="JavaScript" height="45" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg" />&nbsp;&nbsp;
+  <img alt="JavaScript" height="45" src="https://www.svgrepo.com/show/303206/javascript-logo.svg" />&nbsp;&nbsp;
   <img alt="TypeScript" height="45" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" />&nbsp;&nbsp;
   <img alt="Vue.js" height="47" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg" />&nbsp;&nbsp;
   <img alt="React" height="47" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" />&nbsp;&nbsp;
@@ -44,7 +44,7 @@
 <p>
   <img alt="Python" height="54" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" />&nbsp;&nbsp;
   <img alt="C#" height="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" />&nbsp;&nbsp;
-  <img alt="Firebase" height="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-plain.svg" />&nbsp;&nbsp;
+  <img alt="Firebase" height="50" src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/firebase.svg" />&nbsp;&nbsp;
   <img alt="MongoDB" height="48" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" />&nbsp;&nbsp;
   <img alt="MySQL" height="48" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" />&nbsp;&nbsp;
   <img alt="SQL Server" height="50" src="https://img.icons8.com/?size=100&id=laYYF3dV0Iew&format=png&color=000000"/>
