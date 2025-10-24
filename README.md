@@ -57,7 +57,7 @@
   <img alt="Expo" height="50" src="https://cdn.creazilla.com/icons/3256562/file-type-expo-icon-md.png" />&nbsp;&nbsp;
   <img alt="Android Studio" height="52" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/androidstudio/androidstudio-original.svg" />&nbsp;&nbsp;
   <img alt="Git" height="50" src="https://www.svgrepo.com/show/303548/git-icon-logo.svg" />&nbsp;&nbsp;
-  <img alt="Figma" height="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/figma/figma-original.svg" />
+  <img alt="Figma" height="50" src="https://cdn.brandfetch.io/idZHcZ_i7F/theme/dark/symbol.svg?c=1dxbfHSJFAPEGdCLU4o5B" />
 </p>
 
 ---
