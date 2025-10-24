@@ -42,7 +42,7 @@
 
 ### Backend Skills
 <p>
-  <img alt="Python" height="54" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" />&nbsp;&nbsp;
+  <img alt="Python" height="54" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" />&nbsp;&nbsp;
   <img alt="C#" height="50" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg" />&nbsp;&nbsp;
   <img alt="Firebase" height="50" src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/firebase.svg" />&nbsp;&nbsp;
   <img alt="MongoDB" height="48" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg" />&nbsp;&nbsp;
