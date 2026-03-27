@@ -20,7 +20,7 @@
 <p>
 🎨 <strong>Front-end Developer & Designer</strong><br>
 🌷 Amo criar interfaces bonitas, funcionais e responsivas<br>
-🎀 Foco em HTML, CSS, JavaScript e Vue.js<br>
+🎀 Foco em HTML, CSS, JavaScript, React e Vue.js<br>
 💡 Sempre buscando aprender mais sobre UI/UX e animações
 </p>
 
