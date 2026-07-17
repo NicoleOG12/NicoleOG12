@@ -48,6 +48,23 @@
   </tr>
 </table>
 
+<table align="center">
+  <tr>
+    <td>
+      <img
+        height="220"
+        src="https://github-readme-stats-eta-bay-80.vercel.app/api?username=NicoleOG12&show_icons=true&count_private=true&include_all_commits=true&hide_border=true&border_radius=20&rank_icon=github&custom_title=Estatísticas%20do%20GitHub&title_color=FF1493&icon_color=FF69B4&text_color=FFFFFF&bg_color=0D1117&card_width=500"
+      />
+    </td>
+    <td>
+      <img
+        height="220"
+        src="https://github-readme-stats-eta-bay-80.vercel.app/api/top-langs/?username=NicoleOG12&layout=compact&langs_count=8&hide=svg,markdown&hide_border=true&border_radius=20&title_color=FF1493&text_color=FFFFFF&bg_color=0D1117&card_width=500"
+      />
+    </td>
+  </tr>
+</table>
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/output/pacman-contribution-graph-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/output/pacman-contribution-graph.svg">
