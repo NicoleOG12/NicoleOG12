@@ -127,10 +127,12 @@
 </table>
 
 ---
+
+
 <br>
 <p align="center">
   <a href="https://br.linkedin.com/in/nicole-oliveira-gon%C3%A7alves" target="_blank">
-    <img height="40" src="https://img.shields.io/badge/LinkedIn-Perfil-FF1493?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+    <img height="40" src="https://img.shields.io/badge/LinkedIn-Perfil-FF1493?style=for-the-badge" alt="LinkedIn">
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://github.com/NicoleOG12" target="_blank">
@@ -138,7 +140,7 @@
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://nicodeport.vercel.app/" target="_blank">
-    <img height="40" src="https://img.shields.io/badge/Portfólio-FF1493?style=for-the-badge&logo=aboutdotme&logoColor=white" alt="Portfólio">
+    <img height="40" src="https://img.shields.io/badge/Portfólio-Perfil-FF1493?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfólio">
   </a>
   <img style="margin-top:-55px;" src="https://capsule-render.vercel.app/api?type=waving&color=FF1493&height=110&section=footer" width="100%">
 </p>
