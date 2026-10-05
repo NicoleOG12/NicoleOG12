@@ -40,10 +40,10 @@
 <table align="center">
   <tr>
     <td>
-      <img src="https://streak-stats.demolab.com?user=NicoleOG12&theme=radical&hide_border=true&border_radius=20&ring=FF1493&fire=FF1493&currStreakLabel=FF1493&sideLabels=FF69B4&dates=FFFFFF&currStreakNum=FFFFFF&sideNums=FFFFFF&background=0D1117" height="220"/>
+      <img src="https://github-readme-streak-stats-dvgo.vercel.app/?user=NicoleOG12&theme=radical&hide_border=true&border_radius=20&ring=FF1493&fire=FF1493&currStreakLabel=FF1493&sideLabels=FF69B4&dates=FFFFFF&currStreakNum=FFFFFF&sideNums=FFFFFF&background=0D1117" height="220"/>
     </td>
     <td>
-      <img src="https://github-readme-activity-graph.vercel.app/graph?username=NicoleOG12&theme=github-compact&hide_border=true&bg_color=0D1117&color=FF1493&line=FF1493&point=FF69B4&area=true&area_color=FF1493" height="220"/>
+      <img src="https://github-readme-activity-graph-topaz-mu.vercel.app/graph?username=NicoleOG12&theme=github-compact&hide_border=true&bg_color=0D1117&color=FF1493&line=FF1493&point=FF69B4&area=true&area_color=FF1493" height="220"/>
     </td>
   </tr>
 </table>
