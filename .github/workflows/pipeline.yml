@@ -2,14 +2,21 @@ name: 🌸 Refresh GitHub Profile Stats
 
 on:
   schedule:
-    # 03:00 no horário de Brasília (UTC-3)
-    - cron: "0 6 * * *"
+    - cron: "0 */6 * * *"
 
   # Permite executar manualmente pelo GitHub
   workflow_dispatch:
 
+  # Atualiza ao mexer no script ou no workflow
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/scripts/fetch-cards.sh"
+      - ".github/workflows/pipeline.yml"
+
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: refresh-profile-stats
@@ -19,122 +26,35 @@ jobs:
   refresh:
     name: 🔄 Refresh profile cards
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
 
     steps:
-      - name: 🌸 Start
+      - name: 📥 Checkout main
+        uses: actions/checkout@v4
+
+      - name: 🌿 Preparar branch "cards"
         run: |
-          echo "=========================================="
-          echo "🌸 GitHub Profile Stats Refresh"
-          echo "=========================================="
-          echo "Iniciando atualização dos cards..."
-          echo ""
-
-      # ==========================================
-      # 🔥 STREAK STATS
-      # ==========================================
-
-      - name: 🔥 Refresh Streak Stats
-        env:
-          VERCEL_HOOK: ${{ secrets.VERCEL_STREAK_HOOK }}
-        run: |
-          echo "🔥 Atualizando Streak Stats..."
-
-          if [ -z "$VERCEL_HOOK" ]; then
-            echo "❌ Secret VERCEL_STREAK_HOOK não configurado."
-            exit 1
-          fi
-
-          HTTP_STATUS=$(curl \
-            -s \
-            -o /dev/null \
-            -w "%{http_code}" \
-            -X POST \
-            "$VERCEL_HOOK")
-
-          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
-            echo "✅ Streak Stats: redeploy iniciado."
+          if git ls-remote --exit-code --heads origin cards >/dev/null 2>&1; then
+            git fetch origin cards
+            git worktree add -B cards ../cards-branch origin/cards
           else
-            echo "❌ Streak Stats: erro ao iniciar redeploy."
-            echo "HTTP Status: $HTTP_STATUS"
-            exit 1
+            git worktree add --detach ../cards-branch
+            git -C ../cards-branch checkout --orphan cards
+            git -C ../cards-branch rm -rf . >/dev/null 2>&1 || true
           fi
 
-      # ==========================================
-      # 📈 ACTIVITY GRAPH
-      # ==========================================
+      - name: 🔄 Baixar e validar os cards
+        run: bash .github/scripts/fetch-cards.sh ../cards-branch
 
-      - name: 📈 Refresh Activity Graph
-        env:
-          VERCEL_HOOK: ${{ secrets.VERCEL_ACTIVITY_HOOK }}
+      - name: 🚀 Publicar na branch "cards"
+        working-directory: ../cards-branch
         run: |
-          echo "📈 Atualizando Activity Graph..."
-
-          if [ -z "$VERCEL_HOOK" ]; then
-            echo "❌ Secret VERCEL_ACTIVITY_HOOK não configurado."
-            exit 1
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nenhuma mudança nos cards."
+            exit 0
           fi
-
-          HTTP_STATUS=$(curl \
-            -s \
-            -o /dev/null \
-            -w "%{http_code}" \
-            -X POST \
-            "$VERCEL_HOOK")
-
-          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
-            echo "✅ Activity Graph: redeploy iniciado."
-          else
-            echo "❌ Activity Graph: erro ao iniciar redeploy."
-            echo "HTTP Status: $HTTP_STATUS"
-            exit 1
-          fi
-
-      # ==========================================
-      # 📊 GITHUB STATS + TOP LANGUAGES
-      # ==========================================
-
-      - name: 📊 Refresh GitHub Stats
-        env:
-          VERCEL_HOOK: ${{ secrets.VERCEL_STATS_HOOK }}
-        run: |
-          echo "📊 Atualizando GitHub Stats e Top Languages..."
-
-          if [ -z "$VERCEL_HOOK" ]; then
-            echo "❌ Secret VERCEL_STATS_HOOK não configurado."
-            exit 1
-          fi
-
-          HTTP_STATUS=$(curl \
-            -s \
-            -o /dev/null \
-            -w "%{http_code}" \
-            -X POST \
-            "$VERCEL_HOOK")
-
-          if [ "$HTTP_STATUS" -ge 200 ] && [ "$HTTP_STATUS" -lt 300 ]; then
-            echo "✅ GitHub Stats: redeploy iniciado."
-            echo "✅ Top Languages: será atualizado pelo mesmo deployment."
-          else
-            echo "❌ GitHub Stats: erro ao iniciar redeploy."
-            echo "HTTP Status: $HTTP_STATUS"
-            exit 1
-          fi
-
-      # ==========================================
-      # ✅ FINAL
-      # ==========================================
-
-      - name: 🌸 Finish
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "✨ Atualização concluída!"
-          echo "=========================================="
-          echo ""
-          echo "🔥 Streak Stats → redeploy solicitado"
-          echo "📈 Activity Graph → redeploy solicitado"
-          echo "📊 GitHub Stats → redeploy solicitado"
-          echo "💻 Top Languages → redeploy solicitado"
-          echo ""
-          echo "🐍 Pacman não foi alterado porque possui"
-          echo "   sua própria GitHub Action."
+          git commit -m "chore: atualiza cards do perfil"
+          git push origin cards
