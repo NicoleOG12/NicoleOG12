@@ -1,4 +1,9 @@
-name: 🌸 Refresh GitHub Profile Stats
+name: 🌸 Check GitHub Profile Cards
+
+# Apenas VALIDA se os cards da Vercel usados no README estão respondendo
+# e não estão devolvendo um SVG de erro (os serviços respondem HTTP 200 mesmo
+# com erro). Não altera o README nem publica nada.
+# Se algum card falhar, o job fica vermelho e o GitHub avisa por e-mail.
 
 on:
   schedule:
@@ -7,54 +12,65 @@ on:
   # Permite executar manualmente pelo GitHub
   workflow_dispatch:
 
-  # Atualiza ao mexer no script ou no workflow
+  # Valida ao mexer neste workflow
   push:
     branches:
       - main
     paths:
-      - ".github/scripts/fetch-cards.sh"
       - ".github/workflows/pipeline.yml"
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: refresh-profile-stats
+  group: check-profile-cards
   cancel-in-progress: false
 
 jobs:
-  refresh:
-    name: 🔄 Refresh profile cards
+  check:
+    name: 🔎 Check profile cards
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 10
 
     steps:
-      - name: 📥 Checkout main
-        uses: actions/checkout@v4
-
-      - name: 🌿 Preparar branch "cards"
+      - name: 🔎 Validar cards
         run: |
-          if git ls-remote --exit-code --heads origin cards >/dev/null 2>&1; then
-            git fetch origin cards
-            git worktree add -B cards ../cards-branch origin/cards
-          else
-            git worktree add --detach ../cards-branch
-            git -C ../cards-branch checkout --orphan cards
-            git -C ../cards-branch rm -rf . >/dev/null 2>&1 || true
-          fi
+          USER_NAME="NicoleOG12"
+          ATTEMPTS=3
+          ERROR_REGEX="Failed to retrieve|Can't fetch any contribution|Something went wrong|Could not fetch|Could not resolve|rate limit|Maximum retries|Missing params|Please check your username|Unknown error"
 
-      - name: 🔄 Baixar e validar os cards
-        run: bash .github/scripts/fetch-cards.sh ../cards-branch
+          CARDS=(
+            "🔥 Streak Stats|https://github-readme-streak-stats-dvgo.vercel.app/?user=${USER_NAME}"
+            "📈 Activity Graph|https://github-readme-activity-graph-topaz-mu.vercel.app/graph?username=${USER_NAME}&theme=github-compact"
+            "📊 GitHub Stats|https://github-readme-stats-eta-bay-80.vercel.app/api?username=${USER_NAME}&show_icons=true"
+            "💻 Top Languages|https://github-readme-stats-eta-bay-80.vercel.app/api/top-langs/?username=${USER_NAME}&layout=compact"
+          )
 
-      - name: 🚀 Publicar na branch "cards"
-        working-directory: ../cards-branch
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if git diff --cached --quiet; then
-            echo "Nenhuma mudança nos cards."
-            exit 0
-          fi
-          git commit -m "chore: atualiza cards do perfil"
-          git push origin cards
+          failed=0
+
+          for entry in "${CARDS[@]}"; do
+            name="${entry%%|*}"
+            url="${entry#*|}"
+            ok=0
+
+            for attempt in $(seq 1 "$ATTEMPTS"); do
+              status=$(curl -sL -m 40 -o card.svg -w "%{http_code}" "$url" || echo 000)
+
+              if [ "$status" = "200" ] && grep -q "<svg" card.svg && ! grep -qiE "$ERROR_REGEX" card.svg; then
+                ok=1
+                break
+              fi
+
+              echo "  $name: tentativa $attempt/$ATTEMPTS falhou (HTTP $status)"
+              sleep $((attempt * 10))
+            done
+
+            if [ "$ok" = "1" ]; then
+              echo "✅ $name: OK"
+            else
+              echo "::error::$name está fora do ar ou devolvendo erro. URL: $url"
+              failed=1
+            fi
+          done
+
+          exit "$failed"

@@ -40,10 +40,10 @@
 <table align="center">
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/cards/streak.svg" height="220"/>
+      <img src="https://github-readme-streak-stats-dvgo.vercel.app/?user=NicoleOG12&theme=radical&hide_border=true&border_radius=20&ring=FF1493&fire=FF1493&currStreakLabel=FF1493&sideLabels=FF69B4&dates=FFFFFF&currStreakNum=FFFFFF&sideNums=FFFFFF&background=0D1117&v=2" height="220"/>
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/cards/activity.svg" height="220"/>
+      <img src="https://github-readme-activity-graph-topaz-mu.vercel.app/graph?username=NicoleOG12&theme=github-compact&hide_border=true&bg_color=0D1117&color=FF1493&line=FF1493&point=FF69B4&area=true&area_color=FF1493" height="220"/>
     </td>
   </tr>
 </table>
@@ -53,13 +53,13 @@
     <td>
       <img
         height="220"
-        src="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/cards/stats.svg"
+        src="https://github-readme-stats-eta-bay-80.vercel.app/api?username=NicoleOG12&show_icons=true&count_private=true&include_all_commits=true&hide_border=true&border_radius=20&rank_icon=github&custom_title=Estatísticas%20do%20GitHub&title_color=FF1493&icon_color=FF69B4&text_color=FFFFFF&bg_color=0D1117&card_width=500"
       />
     </td>
     <td>
       <img
         height="220"
-        src="https://raw.githubusercontent.com/NicoleOG12/NicoleOG12/cards/top-langs.svg"
+        src="https://github-readme-stats-eta-bay-80.vercel.app/api/top-langs/?username=NicoleOG12&layout=compact&langs_count=8&hide=svg,markdown&hide_border=true&border_radius=20&title_color=FF1493&text_color=FFFFFF&bg_color=0D1117&card_width=500"
       />
     </td>
   </tr>
