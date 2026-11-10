@@ -1,26 +1,27 @@
 name: 🌸 Check GitHub Profile Cards
 
-# Apenas VALIDA se os cards da Vercel usados no README estão respondendo
-# e não estão devolvendo um SVG de erro (os serviços respondem HTTP 200 mesmo
-# com erro). Não altera o README nem publica nada.
-# Se algum card falhar, o job fica vermelho e o GitHub avisa por e-mail.
+# Verifica se os cards da Vercel usados no README estão respondendo.
+# Se algum cair, tenta recuperar (novas tentativas e, se configurado, redeploy
+# na Vercel). Quando o card volta, atualiza o &v= da URL no README, faz commit
+# e push para o GitHub descartar a cópia de erro que guardou em cache.
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 * * * *"
 
   # Permite executar manualmente pelo GitHub
   workflow_dispatch:
 
-  # Valida ao mexer neste workflow
+  # Valida ao mexer na pipeline
   push:
     branches:
       - main
     paths:
       - ".github/workflows/pipeline.yml"
+      - ".github/scripts/check-cards.sh"
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: check-profile-cards
@@ -30,47 +31,37 @@ jobs:
   check:
     name: 🔎 Check profile cards
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 25
 
     steps:
-      - name: 🔎 Validar cards
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🔎 Verificar e recuperar cards
+        id: check
+        continue-on-error: true
+        env:
+          # Opcionais: Deploy Hooks da Vercel (Project → Settings → Git → Deploy Hooks)
+          HOOK_STREAK: ${{ secrets.VERCEL_STREAK_HOOK }}
+          HOOK_ACTIVITY: ${{ secrets.VERCEL_ACTIVITY_HOOK }}
+          HOOK_STATS: ${{ secrets.VERCEL_STATS_HOOK }}
+        run: bash .github/scripts/check-cards.sh README.md
+
+      - name: 🚀 Commit e push
         run: |
-          USER_NAME="NicoleOG12"
-          ATTEMPTS=3
-          ERROR_REGEX="Failed to retrieve|Can't fetch any contribution|Something went wrong|Could not fetch|Could not resolve|rate limit|Maximum retries|Missing params|Please check your username|Unknown error"
+          if git diff --quiet -- README.md; then
+            echo "Nenhuma mudança no README."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "fix: refresh profile cards cache"
+          git pull --rebase origin main
+          git push origin HEAD:main
 
-          CARDS=(
-            "🔥 Streak Stats|https://github-readme-streak-stats-dvgo.vercel.app/?user=${USER_NAME}"
-            "📈 Activity Graph|https://github-readme-activity-graph-topaz-mu.vercel.app/graph?username=${USER_NAME}&theme=github-compact"
-            "📊 GitHub Stats|https://github-readme-stats-eta-bay-80.vercel.app/api?username=${USER_NAME}&show_icons=true"
-            "💻 Top Languages|https://github-readme-stats-eta-bay-80.vercel.app/api/top-langs/?username=${USER_NAME}&layout=compact"
-          )
-
-          failed=0
-
-          for entry in "${CARDS[@]}"; do
-            name="${entry%%|*}"
-            url="${entry#*|}"
-            ok=0
-
-            for attempt in $(seq 1 "$ATTEMPTS"); do
-              status=$(curl -sL -m 40 -o card.svg -w "%{http_code}" "$url" || echo 000)
-
-              if [ "$status" = "200" ] && grep -q "<svg" card.svg && ! grep -qiE "$ERROR_REGEX" card.svg; then
-                ok=1
-                break
-              fi
-
-              echo "  $name: tentativa $attempt/$ATTEMPTS falhou (HTTP $status)"
-              sleep $((attempt * 10))
-            done
-
-            if [ "$ok" = "1" ]; then
-              echo "✅ $name: OK"
-            else
-              echo "::error::$name está fora do ar ou devolvendo erro. URL: $url"
-              failed=1
-            fi
-          done
-
-          exit "$failed"
+      - name: ❌ Falhar se algum card não se recuperou
+        if: steps.check.outcome == 'failure'
+        run: |
+          echo "::error::Algum card continua fora do ar. Veja os logs do passo de verificação."
+          exit 1
